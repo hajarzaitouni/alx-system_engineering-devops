@@ -1,8 +1,6 @@
 # set up my client SSH configuration
 
-file { '/etc/ssh/ssh_config':
-  ensure  => 'present',
-  path    => '/etc/ssh/ssh_config',
-  content => "    IdentityFile ~/.ssh/holberton\n
-      PasswordAuthentication no\n",
+exec { 'config SSH client':
+  command => "echo -e 'IdentityFile ~/.ssh/school\nPasswordAuthentication no\n' >> /etc/ssh/ssh_config",
+  path    => '/bin:/usr/bin',
 }
